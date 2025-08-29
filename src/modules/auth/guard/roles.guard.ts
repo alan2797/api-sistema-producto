@@ -8,9 +8,8 @@ export class RolesGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
     const roles = this.reflector.get<string[]>('roles', context.getHandler());
     const request = context.switchToHttp().getRequest();
-    if (request.user) {
-      return true;
-    }
+    if (!request.user) return false;
+    if (!roles || roles.length === 0) return true;
 
     return roles.includes(request.user.rol.trim());
   }

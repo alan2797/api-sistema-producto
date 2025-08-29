@@ -1,74 +1,178 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Api rest de sistema de producto
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este proyecto es un backend desarrollado con **NestJS**, que implementa autenticación **JWT**, roles de usuario, y clases genéricas para generar CRUD de manera rapida para las tablas de la base de datos.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## Características
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Este proyecto aplica varias funcionalidades y buenas prácticas en NestJS:
 
-## Project setup
+✅ **JWT para autenticación:** Seguridad de endpoints con tokens.
+
+✅ **Uso de TypeScript** para tipado seguro y mantenimiento más sencillo.
+
+✅ **TypeORM** para mapeo de objetos-relacional y manejo de la base de datos.
+
+✅ **Roles de usuario:** Control de acceso a rutas según permisos.
+
+✅ **Uso de decoradores** de NestJS y TypeScript validación y control de rutas por el rol del usuario.
+
+✅ **Clases genéricas**: CRUD completo de cualquier tabla con clases reutilizables.
+
+✅ **Interceptor para respuestas genéricas:** Formato uniforme de las respuestas de la API.
+
+✅ **Manejo de errores** controlados y no controlados: Captura y respuesta consistente de errores.
+
+✅ **Validaciones con class-validator:** Validación de DTOs para garantizar integridad de datos.
+
+✅ **Contraseña encriptada:** Seguridad en almacenamiento de contraseñas.
+
+✅ **Uso de DTOs:** Transferencia de datos consistente entre capas.
+
+✅ **Paginación en listas:** lista de productos con API paginada.
+
+✅ **Swagger para documentación de API:** Generación automática de documentación interactiva.
+
+## Funcionalidades
+
+Actualmente el proyecto cuenta con las siguientes funcionalidades:
+
+✅ Autenticación de usuarios con JWT.
+
+✅ Listar productos paginados desde la base de datos: Accesible tanto para usuarios con rol **admin** como **user**.
+
+✅ Obtener un producto {id} : Accesible tanto para usuarios con rol **admin** como **user**.
+
+✅ Crear productos mediante endpoint seguro: Solo accesible para usuarios con rol **admin**.
+
+✅ Actualizar producto mediante endpoint seguro: Solo accesible para usuarios con rol **admin**.
+
+✅ Eliminar producto {id} mediante endpoint seguro: Solo accesible para usuarios con rol **admin**.
+
+## Requisitos
+
+- Node.js >= 20.x
+- npm o Yarn
+- PostgreSQL
+- Git
+
+---
+
+## Instalación
+
+Clonar el repositorio:
 
 ```bash
-$ npm install
+git clone https://github.com/alan2797/api-sistema-producto.git
+cd api-sistema-producto
 ```
 
-## Compile and run the project
+Instalar dependencias:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
+# o
+yarn install
 ```
 
-## Run tests
+---
+
+## Variables de entorno
+
+```env
+PORT=5000
+DATABASE_URL=URL_DATABASE
+DATABASE_PORT=5432
+DATABASE_HOST=RUL_HOST
+DATABASE_USERNAME=DATABASE_USERNAME
+DATABASE_PASSWORD=DATABASE_PASSWORD
+DATABASE_NAME=DATABASE_NAME
+JWT_SECRET=asdasdsadasd
+WEBPUBLIC=http://localhost:3001
+NODE_ENV=env
+```
+
+## Levantar la aplicación
+
+Modo desarrollo:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm run start:dev
 ```
 
-## Deployment
+Servidor disponible en [http://localhost:3000](http://localhost:3000).
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+---
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## Estructura del proyecto
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+```
+src/
+├── main.ts             # Entry point
+├── app.module.ts       # Módulo raíz
+├── modules/            # Módulos de la app
+│   ├── auth/           # Autenticación y JWT
+│   ├── users/          # Usuarios y roles
+│   └── product         # Producto
+├── constants/          # Constantes globales
+├── database/           # Configuracion de conexion a base de datos y migraciones
+├── shared/             # configuracion/services/controller/clases genericas/interceptores/decoradores
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
+
+## Seguridad
+
+- **JWT** para autenticación de usuarios.
+- **Roles**: Control de acceso a rutas según permisos.
+- Implementado usando **Guards** de NestJS: `AuthGuard`, `RolesGuard`.
+
+Ejemplo de uso en un controlador:
+
+```ts
+  @Post('create')
+  @Roles('ADMIN')
+  @ApiObjResponse(Product)
+  @SuccessMessage(MessageResponse.CREATE)
+  createProduct(@Body() data: CreateProductDto, @Users() user: User) {
+    data.userId = user.id;
+    return super.create(data);
+  }
+```
+
+---
+
+## CRUD genérico
+
+Se utilizan **clases genéricas** para:
+
+- Crear, leer, actualizar y eliminar registros de cualquier tabla.
+- Reducir código repetitivo en servicios y controladores.
+- Funciona con DTOs y entidades de TypeORM.
+
+Ejemplo de uso:
+
+```ts
+@Injectable()
+export class UserService extends GenericService<User> {
+  constructor(private readonly userRepository: UserRepository) {
+    super(userRepository);
+  }
+}
+```
+
+Esto permite tener un **CRUD completo** sin escribir todos los métodos para cada tabla.
+
+---
+
+## Comandos útiles
+
+- `npm run start` → Levanta la app compilada.
+- `npm run start:dev` → Levanta la app en modo desarrollo con hot reload.
+- `npm run build` → Compila para producción.
+
+---
 
 ## Resources
 

@@ -50,6 +50,13 @@ Actualmente el proyecto cuenta con las siguientes funcionalidades:
 
 ✅ Eliminar producto {id} mediante endpoint seguro: Solo accesible para usuarios con rol **admin**.
 
+## Posibles mejoras del sistema
+
+1. Configurar CORS para permitir únicamente orígenes autorizados y así prevenir que sitios maliciosos accedan a las APIs.
+2. Implementar logs centralizados para registrar solicitudes, respuestas y errores,
+   Esto permite solucionar bugs más rápidamente y analizar el comportamiento del sistema en producción.
+3. Agregar Excepciones personalizadas que permitan diferenciar errores de validación, autorización, base de datos, etc., y mejorar la experiencia de desarrollo y usuario.
+
 ## Requisitos
 
 - Node.js >= 20.x

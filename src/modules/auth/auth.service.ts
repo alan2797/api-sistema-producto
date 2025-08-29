@@ -8,17 +8,13 @@ import { PayloadDto } from './dto/payload.dto';
 import { UsuarioTokenDto } from './dto/usuario-token.dto';
 import { BasicMapper } from 'src/shared/utils/basic-mapper';
 import { LoginDto } from './dto/login.dto';
-import { OAuth2Client } from 'google-auth-library';
 
 @Injectable()
 export class AuthService {
-  private googleClient: OAuth2Client;
   constructor(
     private readonly userService: UserService,
     private jwtService: JwtService,
-  ) {
-    this.googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
-  }
+  ) {}
 
   async login(loginDto: LoginDto) {
     const user = await this.userService.findByUser(loginDto.user);
